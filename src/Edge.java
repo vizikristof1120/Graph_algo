@@ -1,7 +1,7 @@
 public class Edge {
-    Node from;
-    Node to;
-    double weight;
+    private Node from;
+    private Node to;
+    private double weight;
 
 //  Constructor
     public Edge(Node from, Node to, double weight){
