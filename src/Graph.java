@@ -8,4 +8,5 @@ public class Graph {
         nodes=new ArrayList<>();
     }
     //TODO get node by name or id (determined later)
+    //it will be id (thx Bujdi)
 }
