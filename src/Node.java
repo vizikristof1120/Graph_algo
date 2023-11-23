@@ -20,4 +20,18 @@ public class Node {
     public int getId() {
         return id;
     }
+    //TODO addEdge testing (not already added)
+
+    public ArrayList<Edge> getEdges() {
+        return edges;
+    }
+    public Edge getEdge(int index){
+        return edges.get(index);
+    }
+    public Edge getEdge(Node dest){
+        for (Edge edge:edges) {
+            if(edge.getTo().equals(dest)) return edge;
+        }
+        return null;
+    }
 }

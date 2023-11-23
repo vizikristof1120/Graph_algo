@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
@@ -6,9 +8,15 @@ public class Main {
         graph.addNode();
         graph.addNode();
         graph.addNode();
-        System.out.println(graph.getNode(3).getId());
+        //random node for testing
+        int number_of_nodes = 4;
+        Random random = new Random();
+
+        //System.out.println(graph.getNode(random.nextInt(number_of_nodes-1)).getId());
         graph.getNode(3).addEdge(graph.getNode(2),0);
-        BFS bfs = new BFS(graph);
-        bfs.end_list.get(0);
+        //BFS bfs = new BFS(graph, graph.getNode(random.nextInt(number_of_nodes-1)));
+        BFS bfs = new BFS(graph, graph.getNode(3));
+        System.out.println(bfs.end_list_node.get(1).getId());//expected: 3
+
     }
 }

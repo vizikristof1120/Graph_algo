@@ -7,12 +7,16 @@ public class Graph {
         this.name=name;
         nodes=new ArrayList<>();
     }
-//  add Node
+//  addNode
     public void addNode(){
         nodes.add(new Node());
     }
 //  getNode
     public Node getNode(int index){
         return nodes.get(index);
+    }
+//  getAllNodes
+    public ArrayList<Node> getNodes() {
+        return nodes;
     }
 }
