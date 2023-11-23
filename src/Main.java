@@ -15,7 +15,7 @@ public class Main {
         //System.out.println(graph.getNode(random.nextInt(number_of_nodes-1)).getId());
         graph.getNode(3).addEdge(graph.getNode(2),0);
         //BFS bfs = new BFS(graph, graph.getNode(random.nextInt(number_of_nodes-1)));
-        BFS bfs = new BFS(graph, graph.getNode(3));
+        BFS bfs = new BFS(graph.getNode(3));
         System.out.println(bfs.end_list_node.get(1).getId());//expected: 3
 
     }
