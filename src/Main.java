@@ -8,6 +8,7 @@ public class Main {
         graph.addNode();
         System.out.println(graph.getNode(3).getId());
         graph.getNode(3).addEdge(graph.getNode(2),0);
-
+        BFS bfs = new BFS(graph);
+        bfs.end_list.get(0);
     }
 }
