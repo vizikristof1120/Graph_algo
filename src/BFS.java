@@ -7,9 +7,8 @@ public class BFS {
         ArrayList<Node> found = new ArrayList<>();
         ArrayList<Node> visited = new ArrayList<>();
         ArrayList<Edge> used_edges = new ArrayList<>();
-        visited.add(start_node);
         found.add(start_node);
-        while(found.containsAll(visited)){
+        while(!found.isEmpty()){
             for (Edge e : found.get(0).getEdges()) {
                 if(!visited.contains(e.getTo()) && !found.contains(e.getTo())){
                     found.add(e.getTo());
@@ -18,7 +17,6 @@ public class BFS {
             }
             visited.add(found.remove(0));
         }
-
         end_list_node = visited;
         end_list_edge = used_edges;
     }

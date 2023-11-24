@@ -3,24 +3,30 @@ import java.util.ArrayList;
 public class Node {
 
     private static int idcounter=0;
-    private int id;
-    private ArrayList<Edge> edges;
+    private final int id;
+    private final ArrayList<Edge> edges;
 
     Node(){
         edges=new ArrayList<>();
         this.id=idcounter++;
     }
 //  add Node
-    public void addEdge(Node to, double weight){
+    public void addEdge(Node to, double weight, boolean directed){
+        //checking for duplicate edges
+        for (Edge edge :edges) {
+            if (edge.getTo().equals(to)) return;
+        }
+        //if edge is undirected then adds another edge which has the 'from' and 'to' is swapped
         edges.add(new Edge(this, to, weight));
+        if(!directed){
+            to.addEdge(this, weight, true);
+        }
     }
 
-//  setId is not necessary
 //  getId
     public int getId() {
         return id;
     }
-    //TODO addEdge testing (not already added)
 
     public ArrayList<Edge> getEdges() {
         return edges;

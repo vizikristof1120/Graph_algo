@@ -1,12 +1,15 @@
 import java.util.ArrayList;
 
 public class Graph {
-    private ArrayList<Node> nodes;
-    private String name;
-    Graph(String name){
+    private final ArrayList<Node> nodes;
+    private final String name;
+    private final boolean directed;
+    Graph(String name, boolean directed){
         this.name=name;
         nodes=new ArrayList<>();
+        this.directed=directed;
     }
+    //TODO a boolean for directed or undirected graphs
 //  addNode
     public void addNode(){
         nodes.add(new Node());
@@ -18,5 +21,9 @@ public class Graph {
 //  getAllNodes
     public ArrayList<Node> getNodes() {
         return nodes;
+    }
+
+    public String getName() {
+        return name;
     }
 }
