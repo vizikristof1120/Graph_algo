@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Node {
+public class Node implements Serializable{
 
     private static int idcounter=0;
     private final int id;
