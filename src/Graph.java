@@ -1,6 +1,7 @@
+import java.io.*;
 import java.util.ArrayList;
 
-public class Graph {
+public class Graph implements Serializable {
     private final ArrayList<Node> nodes;
     private final String name;
     private final boolean directed;
@@ -26,4 +27,26 @@ public class Graph {
     public String getName() {
         return name;
     }
+    public void saveToFile(){
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(name + ".ser");
+            ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream);
+            outputStream.writeObject(this);
+            outputStream.close();
+            fileOutputStream.close();
+        }catch (Exception e){
+            //temporary system out
+            //System.out.println("Write object failed");
+            e.printStackTrace();
+        }
+    }
+    /*public void loadFromFile(){
+        try {
+            FileInputStream fileInputStream = new FileInputStream(name+".ser");
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            this = (Graph) objectInputStream.readObject();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }*/
 }
