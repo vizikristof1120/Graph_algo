@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.Random;
@@ -5,7 +6,7 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
-        Graph graph = new Graph("elso", false);
+        /*Graph graph = new Graph("elso", false);
         graph.addNode();
         graph.addNode();
         graph.addNode();
@@ -19,8 +20,8 @@ public class Main {
         graph.getNode(0).addEdge(graph.getNode(1),0, false);
         graph.getNode(1).addEdge(graph.getNode(2),0, false);
 
-        /*Graph graph = new Graph("elso", false);
-        graph = loadFromFile("elso");*/
+        *//*Graph graph = new Graph("elso", false);
+        graph = loadFromFile("elso");*//*
 
         //BFS bfs = new BFS(graph, graph.getNode(random.nextInt(number_of_nodes-1)));
         BFS bfs = new BFS(graph.getNode(3));
@@ -28,7 +29,9 @@ public class Main {
         DFS dfs = new DFS(graph.getNode(0));
         System.out.println(dfs.nodes_where_stopped.get(2).getId());//expected: 1
         graph.saveToFile();
-
+*/
+        Menu menu = new Menu();
+        Graph graph2 =menu.graph;
     }
     public static Graph loadFromFile(String name){
         Graph graph;

@@ -10,7 +10,6 @@ public class Graph implements Serializable {
         nodes=new ArrayList<>();
         this.directed=directed;
     }
-    //TODO a boolean for directed or undirected graphs
 //  addNode
     public void addNode(){
         nodes.add(new Node());
