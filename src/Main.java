@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.Random;
@@ -30,8 +29,11 @@ public class Main {
         System.out.println(dfs.nodes_where_stopped.get(2).getId());//expected: 1
         graph.saveToFile();
 */
-        Menu menu = new Menu();
-        Graph graph2 =menu.graph;
+        /*Graph_editor graph_editor = new Graph_editor();
+        Graph graph2 =graph_editor.graph;*/
+        /*Graph g2 = loadFromFile("masodik");
+        g2.getNode(0).getEdge(0);*/
+        new Menu();
     }
     public static Graph loadFromFile(String name){
         Graph graph;
