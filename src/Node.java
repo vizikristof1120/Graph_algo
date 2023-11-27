@@ -6,6 +6,14 @@ public class Node implements Serializable{
     private static int idcounter=0;
     private final int id;
     private final ArrayList<Edge> edges;
+    //for A* algorithm
+    private double cost;
+    private double move;
+    private double heuristic;
+
+    public void calculateCost(){
+
+    }
 
     Node(){
         edges=new ArrayList<>();
