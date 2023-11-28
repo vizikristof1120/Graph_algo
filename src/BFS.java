@@ -3,7 +3,13 @@ import java.util.ArrayList;
 public class BFS {
     ArrayList<Node> end_list_node;
     ArrayList<Edge> end_list_edge;
-    public BFS(Node start_node){// graph is not needed because the node defines the graph
+
+    /**
+     * Constructs a Breadth-First Search (BFS) object to traverse a graph starting from the specified node.
+     *
+     * @param start_node The starting node for the BFS traversal.
+     */
+    public BFS(Node start_node){
         ArrayList<Node> found = new ArrayList<>();
         ArrayList<Node> visited = new ArrayList<>();
         ArrayList<Edge> used_edges = new ArrayList<>();
