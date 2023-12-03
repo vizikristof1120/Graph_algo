@@ -107,14 +107,14 @@ public class Graph_chooser extends JFrame {
                         g2.setColor(Color.red);
                         if (bfs_algorithm.end_list_edge.contains(edge)) {
                             drawThisLine(g2, n, from, to);
-                            drawThisLine(g2, n, to, from);
+                            //drawThisLine(g2, n, to, from);
                         }
                     }
                     if (dfs_algorithm != null) {
-                        g2.setColor(Color.red);
+                        g2.setColor(Color.blue);
                         if (dfs_algorithm.end_list_edge.contains(edge)) {
                             drawThisLine(g2, n, from, to);
-                            drawThisLine(g2, n, to, from);
+                            //drawThisLine(g2, n, to, from);
                         }
                     }
                 }
