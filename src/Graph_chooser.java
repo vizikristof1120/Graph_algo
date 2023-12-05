@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
 
 public class Graph_chooser extends JFrame {
     JPanel left, middle, right;
@@ -11,6 +12,8 @@ public class Graph_chooser extends JFrame {
     Graph graph;
     BFS bfs_algorithm;
     DFS dfs_algorithm;
+    ArrayList<Edge> extended_bfs = new ArrayList<>();
+    ArrayList<Edge> extended_dfs = new ArrayList<>();
 
     /**
      * Constructs a new Graph Chooser application window.
@@ -31,7 +34,7 @@ public class Graph_chooser extends JFrame {
 
         select_file = new JButton("Select file");
         select_file.addActionListener(e -> {
-            fileChooser = new JFileChooser();
+            fileChooser = new JFileChooser("C:/Users/vizik/IdeaProjects/Graph_algo");
             int response = fileChooser.showSaveDialog(null);
             if (response == JFileChooser.APPROVE_OPTION) {
                 graph = Main.loadFromFile(fileChooser.getSelectedFile().getAbsolutePath());
@@ -92,46 +95,64 @@ public class Graph_chooser extends JFrame {
 
             for (int i = 0; i < n; i++) {
                 Ellipse2D.Float v = new Ellipse2D.Float((int) (600 + 230 * Math.cos(2 * i * Math.PI / n)) - 15,
-                                                        (int) (400 + 230 * Math.sin(2 * i * Math.PI / n)) - 15, 20, 20);
+                        (int) (400 + 230 * Math.sin(2 * i * Math.PI / n)) - 15, 20, 20);
                 g2.draw(v);
                 g2.fill(v);
             }
-
+            if(bfs_algorithm!=null) {
+                extended_bfs.addAll(bfs_algorithm.end_list_edge);
+                for (Edge edge :
+                        bfs_algorithm.end_list_edge) {
+                    extended_bfs.add(edge.getTo().getEdge(edge.getFrom()));
+                }
+            }
+            if(dfs_algorithm!=null) {
+                extended_dfs.addAll(dfs_algorithm.end_list_edge);
+                for (Edge edge :
+                        dfs_algorithm.end_list_edge) {
+                    extended_dfs.add(edge.getTo().getEdge(edge.getFrom()));
+                }
+            }
             for (Node node : graph.getNodes()) {
                 int from = node.getId();
                 for (Edge edge : node.getEdges()) {
-                    g2.setColor(Color.black);
                     int to = edge.getTo().getId();
-                    drawThisLine(g2, n, from, to);
+                    drawThisLine(g2, n, from, to, Color.black);
+
                     if (bfs_algorithm != null) {
-                        g2.setColor(Color.red);
-                        if (bfs_algorithm.end_list_edge.contains(edge)) {
-                            drawThisLine(g2, n, from, to);
-                            //drawThisLine(g2, n, to, from);
+                        if (extended_bfs.contains(edge)) {
+                            drawThisLine(g2, n, from, to, Color.blue);
+                            drawThisLine(g2, n, to, from, Color.blue);
                         }
                     }
                     if (dfs_algorithm != null) {
-                        g2.setColor(Color.blue);
-                        if (dfs_algorithm.end_list_edge.contains(edge)) {
-                            drawThisLine(g2, n, from, to);
-                            //drawThisLine(g2, n, to, from);
+                        if (extended_dfs.contains(edge)) {
+                            drawThisLine(g2, n, from, to, Color.red);
+                            drawThisLine(g2, n, to, from, Color.red);
                         }
                     }
                 }
             }
         }
+        bfs_algorithm = null;
+        dfs_algorithm = null;
     }
 
     /**
      * Draws a line connecting two nodes on the middle panel based on their respective indices.
      *
-     * @param g2 The Graphics2D context in which to draw the line.
-     * @param n The total number of nodes in the graph.
+     * @param g2   The Graphics2D context in which to draw the line.
+     * @param n    The total number of nodes in the graph.
      * @param from The index of the starting node.
-     * @param to The index of the ending node.
+     * @param to   The index of the ending node.
      */
-    private void drawThisLine(Graphics2D g2, int n, int from, int to) {
+    private void drawThisLine(Graphics2D g2, int n, int from, int to, Color color) {
+
+        g2.setColor(color);
+        //System.out.println(from + " / " + to + " ////" + color);
+
         g2.drawLine((int) (600 + 230 * Math.cos(2 * from * Math.PI / n)), (int) (400 + 230 * Math.sin(2 * from * Math.PI / n)),
                 (int) (600 + 230 * Math.cos(2 * to * Math.PI / n)), (int) (400 + 230 * Math.sin(2 * to * Math.PI / n)));
+        g2.setColor(Color.BLACK);
     }
 }

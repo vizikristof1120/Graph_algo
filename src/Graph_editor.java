@@ -128,6 +128,7 @@ public class Graph_editor extends JFrame implements MouseListener {
         middle.add(button_node);
         System.out.println("button added");
         middle.revalidate();
+        middle.updateUI();
     }
 
     /**
